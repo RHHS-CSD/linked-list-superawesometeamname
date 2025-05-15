@@ -10,9 +10,11 @@ package linkedliststarter;
  */
 public class Data implements Comparable{
     
+    String title;
+    
     @Override
     public String toString(){
-        return null;
+        return title;
     }
     
     @Override
@@ -25,7 +27,7 @@ public class Data implements Comparable{
         return true;
         
     }
-
+    
     @Override
     public int compareTo(Object o) {
         

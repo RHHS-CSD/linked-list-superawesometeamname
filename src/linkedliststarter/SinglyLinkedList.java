@@ -16,9 +16,17 @@ public class SinglyLinkedList implements ILinkedList{
      * Return the size of the Linked List
      * @return an int representing the size
      */
+    //matthew
     @Override
     public int size() {
-        throw new UnsupportedOperationException("Not supported yet."); 
+        int counter = 0;
+        Node curr = head;
+        //while current has a value
+        while (curr != null){
+            counter++;
+            curr = curr.getNext();
+        }
+        return counter;
     }
 
     /**
@@ -66,9 +74,31 @@ public class SinglyLinkedList implements ILinkedList{
      * @param index The index to be retrieved
      * @return The data item, null if bad index
      */
+    
+    //matthew
     @Override
     public Data get(int index) {
-        throw new UnsupportedOperationException("Not supported yet."); 
+        Data indexData;
+        if (index < 0){
+            return null;
+        }
+        Node curr = head;
+        int counter = 0; 
+        
+        //while nodes have not reached end
+        while (curr != null){
+            //if index is reached
+            if (counter == index){
+                return curr.getData();
+            }
+            //else go up by one
+            curr = curr.getNext();
+            //increase counter
+            counter++;
+        }
+        
+        //when out of range i think?
+        return null;
     }
 
     /**
@@ -76,6 +106,8 @@ public class SinglyLinkedList implements ILinkedList{
      * @param item Item to add
      * @return true if successfuuly added, false otherwise
      */
+    
+    //matthew
     @Override
     public boolean add(String item) {
         throw new UnsupportedOperationException("Not supported yet."); 
@@ -87,6 +119,8 @@ public class SinglyLinkedList implements ILinkedList{
      * @param index The position to add the item
      * @return true if successfuuly added, false otherwise
      */
+    
+    //matthew
     @Override
     public boolean add(String item, int index) {
         throw new UnsupportedOperationException("Not supported yet."); 
