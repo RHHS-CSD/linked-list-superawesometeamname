@@ -110,7 +110,31 @@ public class SinglyLinkedList implements ILinkedList{
     //matthew
     @Override
     public boolean add(String item) {
-        throw new UnsupportedOperationException("Not supported yet."); 
+        Data title = new Data(item);
+        Node newNode = new Node(title);
+        
+        if (item == null){
+            return false;
+        }
+        
+        if (head == null) {
+            head = newNode;
+            tail = newNode;
+        } else {
+            tail.setNext(newNode);
+            tail = newNode;
+        }
+        
+        
+        int endIndex = size() - 1;
+        Node curr = head;
+        //go to end node
+        for (int i = 0; i < endIndex; i++){
+            curr = curr.getNext();
+        }
+        curr.setNext(newNode);
+        tail = newNode;
+        return true;
     }
 
     /**
@@ -123,8 +147,40 @@ public class SinglyLinkedList implements ILinkedList{
     //matthew
     @Override
     public boolean add(String item, int index) {
-        throw new UnsupportedOperationException("Not supported yet."); 
+        if (item == null || index < 0) {
+            return false;
+        }
+        
+        Data title = new Data(item);
+        Node newNode = new Node(title);
+        
+        
+        
+        //check if start
+        if (index == 0) {
+            newNode.setNext(head);
+            head = newNode;
+            //if list was empty
+            if (tail == null) {
+                tail = newNode; 
+            }
+            return true;
+        }
+        
+        //else go to node
+        Node curr = head;
+        for (int i = 0; i < index - 1; i++) {
+            curr = curr.getNext();
+        }
+        newNode.setNext(curr.getNext());
+        curr.setNext(newNode);
+        
+        //if obj was last, update it
+        if (newNode.getNext() == null) {
+            tail = newNode;
+        }   
+        
+        return true;
     }
-    
     
 }
